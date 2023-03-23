@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "app" {
   family                   = "myapp-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
  # network_mode             = "awsvpc"
-   network_mode             = "none"
+   network_mode             = "bridge"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
