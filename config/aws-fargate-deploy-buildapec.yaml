@@ -45,7 +45,8 @@ phases:
     on-failure: ABORT
     commands:
     - cd $CODEBUILD_SRC_DIR/src
-  
+    - cp backend/dev.tf .
+    
     finally:
     - terraform init
     # steps:
