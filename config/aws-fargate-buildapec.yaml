@@ -37,8 +37,7 @@ phases:
     - source ~/.bashrc
     - terraform version
       
-    finally:
-    - terraform init
+   
       
     # steps:
   pre_build:
@@ -47,9 +46,8 @@ phases:
     commands:
     - cd $CODEBUILD_SRC_DIR/src
   
-    # finally:
-    #   - command
-    #   - command
+    finally:
+    - terraform init
     # steps:
   build:
     # run-as: Linux-user-name
