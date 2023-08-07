@@ -3,7 +3,7 @@ version: 0.2
 # run-as: Linux-user-name
 
 env:
-  shell: shell-tag
+  shell: bash
   # variables:
   #   key: "value"
   # parameter-store:
