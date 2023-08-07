@@ -30,7 +30,7 @@ phases:
     #   terraform: 1.3.4
     commands:
     # - wget https://releases.hashicorp.com/terraform/1.3.4/terraform_1.3.4_linux_amd64  
-    - unzip terraform_1.3.4_linux_amd64.zip
+    - unzip terraform_1.3.4_darwin_arm64.zip
     - sudo mv terraform /usr/local/bin/
     - ls
     - terraform version
