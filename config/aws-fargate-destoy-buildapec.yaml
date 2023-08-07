@@ -1,0 +1,101 @@
+version: 0.2
+
+# run-as: Linux-user-name
+
+env:
+  shell: bash
+  # variables:
+  #   key: "value"
+  # parameter-store:
+  #   key: "value"
+  # exported-variables:
+  #   - variable
+   
+  # secrets-manager:
+  #   key: aws-fargate
+    
+  # git-credential-helper: no | yes
+
+# proxy:
+#   upload-artifacts: no | yes
+#   logs: no | yes
+
+
+        
+phases:
+  install:
+    # run-as: Linux-user-name
+    on-failure:  ABORT
+    # runtime-versions:
+    commands: 
+    - sudo apt update
+    - VERSION="1.3.4"
+    - curl -LO "https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip"
+    - unzip "terraform_${VERSION}_linux_amd64.zip"
+    - sudo mv terraform /usr/local/bin/
+    - echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc
+    - source ~/.bashrc
+    - terraform version
+      
+   
+      
+    # steps:
+  pre_build:
+    # run-as: Linux-user-name
+    on-failure: ABORT
+    commands:
+    - cd $CODEBUILD_SRC_DIR/src
+  
+    finally:
+    - terraform init
+    # steps:
+  build:
+    # run-as: Linux-user-name
+    on-failure: ABORT
+    commands:
+    - terraform validate
+     
+    finally:
+    - terraform destroy -auto-approve 
+    # steps:
+#   post_build:
+#     run-as: Linux-user-name
+#     on-failure: ABORT | CONTINUE
+#     commands:
+#       - command
+#       - command
+#     finally:
+#       - command
+#       - command
+#     # steps:
+# reports:
+#   report-group-name-or-arn:
+#     files:
+#       - location
+#       - location
+#     base-directory: location
+#     discard-paths: no | yes
+#     file-format: report-format
+artifacts:
+  files:
+    - '**/*'
+ 
+  name: fargate
+#   discard-paths: no | yes
+#   base-directory: location
+#   exclude-paths: excluded paths
+#   enable-symlinks: no | yes
+#   s3-prefix: prefix
+#   secondary-artifacts:
+#     artifactIdentifier:
+#       files:
+#         - location
+#         - location
+#       name: secondary-artifact-name
+#       discard-paths: no | yes
+#       base-directory: location
+
+# cache:
+#   paths:
+#     - path
+#     - path
