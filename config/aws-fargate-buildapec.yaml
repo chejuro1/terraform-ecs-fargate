@@ -11,8 +11,8 @@ env:
   # exported-variables:
   #   - variable
    
-  secrets-manager:
-    key: aws-fargate
+  # secrets-manager:
+  #   key: aws-fargate
     
   # git-credential-helper: no | yes
 
