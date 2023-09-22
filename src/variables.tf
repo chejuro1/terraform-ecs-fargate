@@ -17,7 +17,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "sonarqube"
+  default     = "sonarqube:10.2.1-community"
 }
 
 variable "app_port" {
