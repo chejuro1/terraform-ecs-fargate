@@ -1,7 +1,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "aws-projet"
+    bucket = "awsprojectsonarqube"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
